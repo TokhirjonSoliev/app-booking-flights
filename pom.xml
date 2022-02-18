@@ -85,6 +85,11 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/model-app-booking-flights.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>3.0.0</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
