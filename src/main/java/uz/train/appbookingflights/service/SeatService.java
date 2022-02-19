@@ -22,7 +22,7 @@ public class SeatService {
     private final WagonRepository wagonRepository;
     private final SeatMapper seatMapper;
 
-    public List<SeatDto> getSeats(Integer wagonId){
+    public List<SeatDto> getSeats(Integer wagonId) {
         List<SeatDto> seatDtos = new ArrayList<>();
         WagonEntity wagon = wagonRepository.findById(wagonId)
                 .orElseThrow(() -> new NotFoundException("There is no such a wagon", WagonEntity.class, "wagonId"));
@@ -35,19 +35,19 @@ public class SeatService {
         return seatDtos;
     }
 
-    public SeatDto getSeat(Integer wagonId, Integer seatId){
+    public SeatDto getSeat(Integer wagonId, Integer seatId) {
         SeatEntity seat = seatRepository.findByIdAndWagonEntity_Id(seatId, wagonId)
                 .orElseThrow(() -> new NotFoundException("There is no such a seat in given wagon", SeatEntity.class, "seatId"));
 
         return seatMapper.entityToResponseDTO(seat);
     }
 
-    public void addSeat(Integer wagonId, SeatDto seatDto){
+    public void addSeat(Integer wagonId, SeatDto seatDto) {
         WagonEntity wagon = wagonRepository.findById(wagonId)
                 .orElseThrow(() -> new NotFoundException("There is no such a wagon", WagonEntity.class, "wagonId"));
 
         boolean existsSeat = seatRepository.existsBySeatNumberAndWagonEntity_Id(seatDto.getSeatNumber(), wagonId);
-        if (existsSeat){
+        if (existsSeat) {
             throw new ConflictException("This seat number is already in use", SeatEntity.class, "seatNumber and wagonNumber");
         }
 
@@ -56,7 +56,7 @@ public class SeatService {
         seatRepository.save(seatEntity);
     }
 
-    public SeatDto editSeat(Integer wagonId, Integer seatId, SeatDto seatDto){
+    public SeatDto editSeat(Integer wagonId, Integer seatId, SeatDto seatDto) {
         WagonEntity wagon = wagonRepository.findById(wagonId)
                 .orElseThrow(() -> new NotFoundException("There is no such a wagon", WagonEntity.class, "wagonId"));
 
@@ -69,7 +69,7 @@ public class SeatService {
         return seatMapper.entityToResponseDTO(seat);
     }
 
-    public void deleteSeat(Integer wagonId, Integer seatId){
+    public void deleteSeat(Integer wagonId, Integer seatId) {
         SeatEntity seat = seatRepository.findByIdAndWagonEntity_Id(seatId, wagonId)
                 .orElseThrow(() -> new NotFoundException("There is no such a seat", SeatEntity.class, "seatId"));
 
