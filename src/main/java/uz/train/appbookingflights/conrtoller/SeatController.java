@@ -9,7 +9,7 @@ import uz.train.modelappbookingflights.Dto.SeatDto;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/{wagon_id}/seats")
+@RequestMapping("/wagons/{wagon_id}/seats")
 public class SeatController {
     private final SeatService seatService;
 
