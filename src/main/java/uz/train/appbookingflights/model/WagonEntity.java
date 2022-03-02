@@ -6,10 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import uz.train.appbookingflights.model.base.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,10 +16,20 @@ import javax.persistence.OneToMany;
 @Entity
 public class WagonEntity extends BaseEntity {
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private TrainEntity trainEntity;
 
     @Column(nullable = false)
     private Integer wagonNumber;
+
+    @Column(nullable = false)
+    private Integer maxSeats;
+    private Integer countOfSeats;
+
+    @Column(nullable = false)
+    private boolean wagonStatus;
+
+    @OneToMany(mappedBy = "wagonEntity")
+    private List<SeatEntity> seatEntities;
 
 }

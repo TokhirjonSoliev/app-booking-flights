@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uz.train.appbookingflights.service.WagonService;
-import uz.train.modelappbookingflights.Dto.WagonDto;
+import uz.train.modelappbookingflights.Dto.createDto.WagonCreateDto;
 
 @RequiredArgsConstructor
 @RestController
@@ -24,14 +24,14 @@ public class WagonController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addWagon(@PathVariable Integer train_id, @RequestBody WagonDto wagonDto){
-        wagonService.addWagon(train_id, wagonDto);
+    public ResponseEntity<?> addWagon(@PathVariable Integer train_id, @RequestBody WagonCreateDto wagonCreateDto){
+        wagonService.addWagon(train_id, wagonCreateDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{wagon_id}")
-    public ResponseEntity<?> editWagon(@PathVariable Integer train_id, @PathVariable Integer wagon_id, @RequestBody WagonDto wagonDto){
-        return ResponseEntity.ok(wagonService.editWagon(train_id, wagon_id, wagonDto));
+    public ResponseEntity<?> editWagon(@PathVariable Integer train_id, @PathVariable Integer wagon_id, @RequestBody WagonCreateDto wagonCreateDto){
+        return ResponseEntity.ok(wagonService.editWagon(train_id, wagon_id, wagonCreateDto));
     }
 
     @DeleteMapping("/{wagon_id}")
