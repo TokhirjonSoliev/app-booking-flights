@@ -80,10 +80,10 @@
         </dependency>
         <dependency>
             <groupId>uz.train</groupId>
-            <artifactId>model-app-booking-flight</artifactId>
+            <artifactId>model-app-flight</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/model-app-booking-flights.jar</systemPath>
+            <systemPath>${project.basedir}/libs/model-app-flights.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.modelmapper</groupId>

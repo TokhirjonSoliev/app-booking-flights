@@ -8,6 +8,7 @@ import uz.train.appbookingflights.model.base.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 @NoArgsConstructor
@@ -17,7 +18,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class SeatEntity extends BaseEntity {
 
-    @ManyToOne
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private WagonEntity wagonEntity;
 
     @Column(nullable = false)

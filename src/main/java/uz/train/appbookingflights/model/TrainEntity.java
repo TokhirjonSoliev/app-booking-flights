@@ -16,19 +16,27 @@ public class TrainEntity extends BaseEntity {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne
-    private CityEntity fromCity;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private StationEntity fromStation;
 
-    @ManyToOne
-    private CityEntity toCity;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private StationEntity toStation;
 
     @Column(nullable = false,unique = true)
     private String trainNumber;
 
     @Column(nullable = false)
-    private boolean status;
+    private Integer maxWagons;
+
+    @Column(nullable = false)
+    private Integer countOfWagons;
+
+    private boolean trainStatus;
 
     @ManyToMany
-    private List<StationEntity> includeStation;
+    private List<StationEntity> includeStations;
+
+    @OneToMany(mappedBy = "trainEntity")
+    private List<WagonEntity> wagonEntities;
 
 }
