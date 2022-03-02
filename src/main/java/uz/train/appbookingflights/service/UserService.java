@@ -49,7 +49,7 @@ public class UserService {
                 .orElseThrow(() -> new NotFoundException("User not found", UserEntity.class, "userId"));
 
         userMapper.updateEntity(userDto, userEntity);
-
+        userRepository.save(userEntity);
         return userMapper.entityToResponseDTO(userEntity);
     }
 
