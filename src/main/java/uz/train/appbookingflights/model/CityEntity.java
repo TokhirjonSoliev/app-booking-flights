@@ -13,7 +13,7 @@ import javax.persistence.*;
 
 public class CityEntity extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false,unique = true)
     private Integer cityNumber;
 
     @Column(nullable = false)

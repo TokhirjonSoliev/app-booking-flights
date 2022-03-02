@@ -4,7 +4,6 @@ import lombok.*;
 import uz.train.appbookingflights.model.base.BaseEntity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.List;
 
 @NoArgsConstructor
@@ -14,8 +13,6 @@ import java.util.List;
 @Entity
 public class PaymentEntity extends BaseEntity {
 
-
-    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
@@ -26,7 +23,5 @@ public class PaymentEntity extends BaseEntity {
 
     @ManyToMany
     private List<BuyTicketEntity> buyTicketList;
-
-
 
 }

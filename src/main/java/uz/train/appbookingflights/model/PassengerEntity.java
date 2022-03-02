@@ -23,8 +23,8 @@ public class PassengerEntity {
     )
     private UUID id;
 
-    @OneToOne
-    private UserEntity user;
+    @ManyToOne
+    private UserEntity userEntity;
 
     @Column(nullable = false)
     private String firstName;
@@ -40,7 +40,7 @@ public class PassengerEntity {
     private Gender gender;
 
     @Column(nullable = false)
-    private LocalDate birthDate;
+    private LocalDate birthday;
 
     @Column(nullable = false,unique = true)
     private String passport;
